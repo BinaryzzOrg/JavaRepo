@@ -76,15 +76,31 @@ public class PrelimLabExercise2 {
 
 	}
 
-	public static void ClearAllChanges() {
+	public static void ClearAllChanges(int[] array, boolean getDisable_Switch) {
+		
+		//boolean flag indicate if array is switch back to null again
+		boolean Deleted = false;
+		//store input variable
+		int clearPrompt;
+		//while boolean is false
+		while (!Deleted) {
+			//prompt query
+			System.out.println("You sure to clear all your changes?\n" + 
+							   "[1] Clear it" + "\n[0] I Change my mind");
+			//collects user input
+			clearPrompt = sc.nextInt();
+			//if equals to 1 then array will be null, boolean flag become true, disable the initialize choice will be false again
+			if (clearPrompt == 1) {
+				Deleted = true;
+				getDisable_Switch = false;
+				array = null;
+				// else terminate the operation and go back to main menu
+			} else if (clearPrompt == 0) {
+				System.out.println("Going back to Main Menu!!!");
+			} 
 
-		/*
-		 * kay reyes
-		 *
-		 */
-
+		}
 	}
-
 	/*
 	 * Method to locate index has a parameter of an integer array and an integer for
 	 * the target element returns the index if found, else, returns -1
