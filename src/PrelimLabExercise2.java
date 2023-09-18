@@ -104,13 +104,29 @@ public class PrelimLabExercise2 {
 	 * to input the size
 	 */
 	public static void Initialized() {
-
 		/*
 		 * kay nilberto ask si user ng size then get all user input elements magrereturn
 		 * ng array which is ung initialized na (change ung void)
 		 */
 
-	}
+		// ask user to Enter the size of array
+		System.out.print("Enter the size of the array: ");
+		int size = sc.nextInt();
+		// Create an array of the specified size
+		array = new int[size];
+
+		// Loop to iterate over each index of the array
+		for (int index = 0; index < size; index++) {
+			System.out.print("Enter element at index " + index + ": ");
+			// Read an element and store it at the current index
+			array[index] = sc.nextInt();
+		}
+
+		// Call the DisplayArray method to display the content of the arrays
+		DisplayArray();
+
+	}// end method
+
 	/*
 	 * Method to remove an element from the array has a parameter of an integer
 	 * array ask the user to input the select which element to remove by asking the
@@ -150,7 +166,16 @@ public class PrelimLabExercise2 {
 	 * {deleted} insert the user preferred input there
 	 */
 
-	public static void InsertElement() {
+	public static void InsertElement(int[] array) {
+
+		sc = new Scanner(System.in);
+
+		for (int index = 0; index < array.length; index++) {
+			if (array[index] == -1) {
+				System.out.println("Enter element to be inserted: ");
+				break;
+			} // end if
+		} // end for loop
 
 		/*
 		 * kay nadela and nilbert ask ano iinput condition check if -1 si value then
