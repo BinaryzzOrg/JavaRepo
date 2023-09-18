@@ -67,14 +67,22 @@ public class PrelimLabExercise2 {
 	 * true or false value
 	 */
 
-	public static void Initialized_First() {
-
-		/*
-		 * kay Landicho change it from void to boolean magrereturn ng true or false if
-		 * di pa initialized also send a warning message
-		 */
-
+	public static boolean Initialized_First() {
+		//boolean flag to check if array is not initialized
+		boolean notInitialized = false;
+		//condition statement to verify if array is equal to null
+		if (array == null) {
+			//set to true
+			notInitialized = true;
+			//displays warnings
+			System.out.println("Initialized array first!!!");
+		}
+		//return boolean state
+		return notInitialized;
 	}
+		
+
+	
 
 	public static void ClearAllChanges(int[] array, boolean getDisable_Switch) {
 		
@@ -139,7 +147,7 @@ public class PrelimLabExercise2 {
 		}
 
 		// Call the DisplayArray method to display the content of the arrays
-		DisplayArray();
+		DisplayArray(array);
 
 	}// end method
 
@@ -149,33 +157,52 @@ public class PrelimLabExercise2 {
 	 * index
 	 */
 
-	public static void RemoveArray() {
-
-		/*
-		 * kay saymo ask si user kung ano tatangalin used the indexLocate ni nadela then
-		 * provide notice na imbis ireremove literally is magforformat ng X which means
-		 * vacated use yung notice_Msg na array index 2 if nagremove is just replace the
-		 * value of the removed to -1
-		 *
-		 *
-		 */
-
+	public static void RemoveElements(int[] remove) {
+		
+		System.out.print("Enter the index you want to removed\n: ");
+		int indexRemove = sc.nextInt(); 
+		
+		if (indexRemove > remove.length - 1 || indexRemove < 0) {
+			System.out.println("{Invalid index!! Index does not exist!}");
+			RemoveElements(remove);
+		}
+		else {
+			if (remove[indexRemove] == -1) {
+				System.out.println("There's no value to be deleted!");
+			}
+			else {
+				remove[indexRemove] = -1;
+				System.out.println("Element at index [" + indexRemove + "] was successfully deleted!");
+				System.out.println(NOTICE_MSG[2]);
+			}
+		}
+		
 	}
+
 	/*
 	 * Method to display the current state of elements in the array has a parameter
 	 * of an integer array prints an "X" format when an index is vacated
 	 */
 
-	public static void DisplayArray() {
-
-		/*
-		 * kay cristopher display sa array pwedeng may parameter or just called the
-		 * array variable na static check muna kung yung Initialized code ni nilbert is
-		 * nagbabalik ng new initialized int[] array prints ng X pag -1 yung value ng
-		 * element which is mababago sa remove method ni saymo
-		 */
+	public static void DisplayArray(int[] display) {
+		
+		//prints head message
+		System.out.println("Current Elements: ");
+		
+		for (int i = 0; i < display.length; i++) {
+			//if neg 1 it will print X
+			if (display[i] == -1) {
+				System.out.printf("[X]");
+			} else {
+				//else convert integer to string for printing purposes
+				System.out.print("[" + Integer.toString(display[i]) + "]");
+			}
+		}
+		//newline
+		System.out.println();
 
 	}
+	
 
 	/*
 	 * Method to insert an element in the array locates which index is vacated
@@ -201,16 +228,37 @@ public class PrelimLabExercise2 {
 
 	/*
 	 * Shift element to left-side checks if array had a vacated index
+	 * preserves their relating order
 	 */
 
-	public static void CompressElementtoLeft() {
-
-		/*
-		 * reyes and saymo pwede recursive method or diff algo
-		 *
-		 *
-		 */
-
+	public static void Shift_CompressElem(int[] array) {	
+		//boolean flag if swaps are made during loop
+		boolean valid = false;
+		//provides as a position of index guide where the non-negative element to be placed
+		int nonNegVal = 0;
+		//compression process, stops if there's no swap
+		do {	
+			//loop through array
+		for (int i = 0; i < array.length; i++) {
+			//check if element is greater than -1
+			if (array[i] > -1) {
+				//swap non-negative to the nonNegVal variable 
+				int temp = array[i];
+				array[i] = array[nonNegVal];
+				array[nonNegVal] = temp;
+				//increment nonNegVal to position next non-negative element
+				nonNegVal++;
+			}
+		}
+		//set to true, indicates complete pass or looping
+		valid = true;
+		//continue until the swapping stops
+		} while (!valid);
+		
+		//prints message indicate compression process is complete
+		System.out.println("Done compressing!!!");
+		
+		
 	}
 	/*
 	 * Prompts user to continues if not the program will be terminated
@@ -234,21 +282,46 @@ public class PrelimLabExercise2 {
 	public static void Operation_Type(int input) {
 		switch (input) {
 		case 1:
+			
+			if (Initialized_First()) {
+				
+			}
 
 			break;
 		case 2:
+			if (Initialized_First()) {
+				break;
+			}
+			
+			RemoveElements(array);
 
 			break;
 		case 3:
+			if (Initialized_First()) {
+				break;
+			}
+				 DisplayArray(array);
+			
 
 			break;
 		case 4:
+			if (Initialized_First()) {
+				break;
+			}
 
 			break;
 		case 5:
+			if (Initialized_First()) {
+				break;
+			}
+			
+			Shift_CompressElem(array);
 
 			break;
 		case 6:
+			if (Initialized_First()) {
+				break;
+			}
 
 			break;
 		case 7:
