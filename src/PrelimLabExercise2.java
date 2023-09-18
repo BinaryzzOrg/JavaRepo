@@ -179,7 +179,7 @@ public class PrelimLabExercise2 {
 				break;
 			} // end if
 
-			System.out.println("Array is testing change");
+			System.out.println("Array is full!");
 		} // end for loop
 	}// end method
 
