@@ -173,17 +173,15 @@ public class PrelimLabExercise2 {
 		for (int index = 0; index < array.length; index++) {
 			if (array[index] == -1) {
 				System.out.println("Enter element to be inserted: ");
+				array[index] = sc.nextInt();
+				System.out.println("Element successfully inserted!");
+				// *call display array here*
 				break;
 			} // end if
+
+			System.out.println("Array is testing change");
 		} // end for loop
-
-		/*
-		 * kay nadela and nilbert ask ano iinput condition check if -1 si value then
-		 * palitan ung -1 value ng na ask na value
-		 *
-		 */
-
-	}
+	}// end method
 
 	/*
 	 * Shift element to left-side checks if array had a vacated index
