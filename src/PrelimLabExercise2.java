@@ -68,21 +68,18 @@ public class PrelimLabExercise2 {
 	 */
 
 	public static boolean Initialized_First() {
-		//boolean flag to check if array is not initialized
+		// boolean flag to check if array is not initialized
 		boolean notInitialized = false;
-		//condition statement to verify if array is equal to null
+		// condition statement to verify if array is equal to null
 		if (array == null) {
-			//set to true
+			// set to true
 			notInitialized = true;
-			//displays warnings
+			// displays warnings
 			System.out.println("Initialized array first!!!");
 		}
-		//return boolean state
+		// return boolean state
 		return notInitialized;
 	}
-		
-
-	
 
 	public static void ClearAllChanges(int[] array, boolean getDisable_Switch) {
 
@@ -158,25 +155,23 @@ public class PrelimLabExercise2 {
 	 */
 
 	public static void RemoveElements(int[] remove) {
-		
+
 		System.out.print("Enter the index you want to removed\n: ");
-		int indexRemove = sc.nextInt(); 
-		
+		int indexRemove = sc.nextInt();
+
 		if (indexRemove > remove.length - 1 || indexRemove < 0) {
 			System.out.println("{Invalid index!! Index does not exist!}");
 			RemoveElements(remove);
-		}
-		else {
+		} else {
 			if (remove[indexRemove] == -1) {
 				System.out.println("There's no value to be deleted!");
-			}
-			else {
+			} else {
 				remove[indexRemove] = -1;
 				System.out.println("Element at index [" + indexRemove + "] was successfully deleted!");
 				System.out.println(NOTICE_MSG[2]);
 			}
 		}
-		
+
 	}
 
 	/*
@@ -185,24 +180,37 @@ public class PrelimLabExercise2 {
 	 */
 
 	public static void DisplayArray(int[] display) {
-		
-		//prints head message
+
+		// prints head message
 		System.out.println("Current Elements: ");
-		
+
 		for (int i = 0; i < display.length; i++) {
-			//if neg 1 it will print X
+			// if neg 1 it will print X
 			if (display[i] == -1) {
 				System.out.printf("[X]");
 			} else {
-				//else convert integer to string for printing purposes
+				// else convert integer to string for printing purposes
 				System.out.print("[" + Integer.toString(display[i]) + "]");
 			}
 		}
-		//newline
+		// newline
 		System.out.println();
 
+		/*
+		 * String[] arrayString = new String[array.length];
+		 * System.out.println("Elements of the array"); for(int i=0; i<array.length;
+		 * i++) { //convert int to String to store String value in array arrayString[i]
+		 * =Integer.toString(array[i]); //the condition that will print "X" if there are
+		 * -1 elements in the array if(array[i]==-1) { arrayString[i]="X";
+		 * 
+		 * }
+		 * 
+		 * System.out.print(arrayString[i]+" ");
+		 * 
+		 * }
+		 */
+
 	}
-	
 
 	/*
 	 * Method to insert an element in the array locates which index is vacated
@@ -223,43 +231,45 @@ public class PrelimLabExercise2 {
 			} // end if
 
 			System.out.println("Array is full!");
-			System.out.println("test only");
+
+			// these are changes in testBranch
+			System.out.println("test only branch");
 		} // end for loop
 	}// end method
 
 	/*
-	 * Shift element to left-side checks if array had a vacated index
-	 * preserves their relating order
+	 * Shift element to left-side checks if array had a vacated index preserves
+	 * their relating order
 	 */
 
-	public static void Shift_CompressElem(int[] array) {	
-		//boolean flag if swaps are made during loop
+	public static void Shift_CompressElem(int[] array) {
+		// boolean flag if swaps are made during loop
 		boolean valid = false;
-		//provides as a position of index guide where the non-negative element to be placed
+		// provides as a position of index guide where the non-negative element to be
+		// placed
 		int nonNegVal = 0;
-		//compression process, stops if there's no swap
-		do {	
-			//loop through array
-		for (int i = 0; i < array.length; i++) {
-			//check if element is greater than -1
-			if (array[i] > -1) {
-				//swap non-negative to the nonNegVal variable 
-				int temp = array[i];
-				array[i] = array[nonNegVal];
-				array[nonNegVal] = temp;
-				//increment nonNegVal to position next non-negative element
-				nonNegVal++;
+		// compression process, stops if there's no swap
+		do {
+			// loop through array
+			for (int i = 0; i < array.length; i++) {
+				// check if element is greater than -1
+				if (array[i] > -1) {
+					// swap non-negative to the nonNegVal variable
+					int temp = array[i];
+					array[i] = array[nonNegVal];
+					array[nonNegVal] = temp;
+					// increment nonNegVal to position next non-negative element
+					nonNegVal++;
+				}
 			}
-		}
-		//set to true, indicates complete pass or looping
-		valid = true;
-		//continue until the swapping stops
+			// set to true, indicates complete pass or looping
+			valid = true;
+			// continue until the swapping stops
 		} while (!valid);
-		
-		//prints message indicate compression process is complete
+
+		// prints message indicate compression process is complete
 		System.out.println("Done compressing!!!");
-		
-		
+
 	}
 	/*
 	 * Prompts user to continues if not the program will be terminated
@@ -283,9 +293,9 @@ public class PrelimLabExercise2 {
 	public static void Operation_Type(int input) {
 		switch (input) {
 		case 1:
-			
+
 			if (Initialized_First()) {
-				
+
 			}
 
 			break;
@@ -293,7 +303,7 @@ public class PrelimLabExercise2 {
 			if (Initialized_First()) {
 				break;
 			}
-			
+
 			RemoveElements(array);
 
 			break;
@@ -301,8 +311,7 @@ public class PrelimLabExercise2 {
 			if (Initialized_First()) {
 				break;
 			}
-				 DisplayArray(array);
-			
+			DisplayArray(array);
 
 			break;
 		case 4:
@@ -315,7 +324,7 @@ public class PrelimLabExercise2 {
 			if (Initialized_First()) {
 				break;
 			}
-			
+
 			Shift_CompressElem(array);
 
 			break;
