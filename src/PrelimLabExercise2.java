@@ -53,15 +53,16 @@ public class PrelimLabExercise2 {
 					passed = true;
 					break;
 				}
-			}
+			} // end if
 
 			if (!passed) {
 				System.out.println("Please type from 1-6 only!!!");
-			}
+			} // end if
 
-		}
+		} // end while
 		return userPrompt;
 	}// end method
+
 	/*
 	 * Method to send a warning before checking the other CRUD operations returns a
 	 * true or false value
@@ -106,8 +107,8 @@ public class PrelimLabExercise2 {
 				System.out.println("Heading back to Main Menu!!!");
 			}
 
-		}
-	}
+		} // end while loop
+	}// end method
 	/*
 	 * Method to locate index has a parameter of an integer array and an integer for
 	 * the target element returns the index if found, else, returns -1
@@ -133,11 +134,8 @@ public class PrelimLabExercise2 {
 	 * Method to initialized array has a parameter of an integer array ask the user
 	 * to input the size
 	 */
-	public static void Initialized() {
-		/*
-		 * kay nilberto ask si user ng size then get all user input elements magrereturn
-		 * ng array which is ung initialized na (change ung void)
-		 */
+
+	public static int[] Initialized() {
 
 		// ask user to Enter the size of array
 		System.out.print("Enter the size of the array: ");
@@ -147,14 +145,10 @@ public class PrelimLabExercise2 {
 
 		// Loop to iterate over each index of the array
 		for (int index = 0; index < size; index++) {
-			System.out.print("Enter element at index " + index + ": ");
-			// Read an element and store it at the current index
-			array[index] = sc.nextInt();
-		}
+			array[index] = -1;
+		} // end for
 
-		// Call the DisplayArray method to display the content of the arrays
-		DisplayArray(array);
-
+		return array;
 	}// end method
 
 	/*
@@ -179,9 +173,8 @@ public class PrelimLabExercise2 {
 				System.out.println("Element at index [" + indexRemove + "] was successfully deleted!");
 				System.out.println(NOTICE_MSG[2]);
 			}
-		}
-
-	}
+		} // end if else
+	}// end method
 
 	/*
 	 * Method to display the current state of elements in the array has a parameter
@@ -212,15 +205,16 @@ public class PrelimLabExercise2 {
 	 */
 
 	public static void InsertElement(int[] array) {
-
+		// store user input
 		sc = new Scanner(System.in);
-
+		// iterate the array
 		for (int index = 0; index < array.length; index++) {
 			if (array[index] == -1) {
 				System.out.println("Enter element to be inserted: ");
 				array[index] = sc.nextInt();
 				System.out.println("Element successfully inserted!");
-				// *call display array here*
+				// call to display array
+				DisplayArray(array);
 				break;
 			} // end if
 
@@ -234,6 +228,7 @@ public class PrelimLabExercise2 {
 	 */
 
 	public static void Shift_CompressElem(int[] array, int startCollectNegValue) {
+
 		// Prints message
 		System.out.println(NOTICE_MSG[3]);
 		// boolean flag if swaps are made during loop
@@ -242,16 +237,19 @@ public class PrelimLabExercise2 {
 		do {
 			// loop through array
 			for (int i = 0; i < array.length; i++) {
+
 				// check if element is greater than -1
 				if (array[i] > -1) {
+
 					// swap non-negative to the nonNegVal variable
 					int temp = array[i];
 					array[i] = array[startCollectNegValue];
 					array[startCollectNegValue] = temp;
 					// increment nonNegVal to position next non-negative element
 					startCollectNegValue++;
-				}
-			}
+				} // end if
+			} // end for
+
 			// set to true, indicates complete pass or looping
 			complete_Pass = true;
 			// continue until the swapping stops
@@ -259,8 +257,8 @@ public class PrelimLabExercise2 {
 
 		// prints message indicate compression process is complete
 		System.out.println("Done compressing!!!");
+	}// end method
 
-	}
 	/*
 	 * Prompts user to continues if not the program will be terminated
 	 */
@@ -272,26 +270,31 @@ public class PrelimLabExercise2 {
 		// boolean to determine when to stop looping
 		boolean repeatUntilNoError = false;
 		while (!repeatUntilNoError) {
+
 			// prompt a query for user if want to continue
 			System.out.println("Do you want to continue?\n[1]\n[0]:");
+
 			// stores user response
 			proceed = sc.nextInt();
+
 			// if 1, stop loop and go back to main menu
 			if (proceed == 1) {
+
 				System.out.println("Going Back to the Main Menu!!!");
 				repeatUntilNoError = true;
 				// if 0 terminate the application
 			} else if (proceed == 0) {
+
 				System.out.println("Leaving the Application");
 				System.exit(0);
 			} else {
+
 				// else invalid input then loop query again
 				System.out.println("Invalid Input!!!");
-			}
+			} // end else if
+		} // end while
+	}// end method
 
-		}
-
-	}
 	/*
 	 * Method to properly make a condition between operations has a parameter of an
 	 * integer for checking the input of user uses the method Initialized_First upon
@@ -299,12 +302,12 @@ public class PrelimLabExercise2 {
 	 */
 
 	public static void Operation_Type(int input) {
+
 		switch (input) {
 		case 1:
 
 			Initialized();
 			AskUserToContinue();
-
 			break;
 		case 2:
 			if (Initialized_First()) {
@@ -313,23 +316,22 @@ public class PrelimLabExercise2 {
 
 			RemoveElements(array);
 			AskUserToContinue();
-
 			break;
 		case 3:
 			if (Initialized_First()) {
 				break;
 			}
+
 			DisplayArray(array);
 			AskUserToContinue();
-
 			break;
 		case 4:
 			if (Initialized_First()) {
 				break;
 			}
+
 			InsertElement(array);
 			AskUserToContinue();
-
 			break;
 		case 5:
 			if (Initialized_First()) {
@@ -340,7 +342,6 @@ public class PrelimLabExercise2 {
 			// used for counter later
 			Shift_CompressElem(array, 0);
 			AskUserToContinue();
-
 			break;
 		case 6:
 			if (Initialized_First()) {
@@ -348,16 +349,16 @@ public class PrelimLabExercise2 {
 			}
 
 			ClearAllChanges(array, disableOneChoice);
-
 			break;
 		case 7:
 			System.out.println("Exiting Program!!!");
 			System.exit(0);
 			break;
-
-		}
-
-	}
+		default:
+			System.out.println("Something went wrong in Operation_Type method");
+			break;
+		}// end switch
+	}// end method
 
 	// Main Driver (Method)
 	public static void main(String[] args) {
@@ -376,10 +377,9 @@ public class PrelimLabExercise2 {
 				 * again
 				 */
 				disableOneChoice = true;
-			}
-			// continue looping until boolean flag becomes true
+			} // end if
+				// continue looping until boolean flag becomes true
 		} while (!repeatProcess);
-
-	}
+	}// end method
 
 }// end class
