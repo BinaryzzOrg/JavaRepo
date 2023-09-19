@@ -42,8 +42,8 @@ public class PrelimLabExercise2 {
 					System.out.println("\t=>" + NOTICE_MSG[i + 1]);
 				} else {
 					System.out.println("\t=>" + "[" + (i + 1) + "]" + blueprint[i]);
-				}
-			}
+				} // end if else
+			} // end for
 			System.out.println("Please Choose An Operation:");
 
 			userPrompt = sc.nextInt();
@@ -142,11 +142,6 @@ public class PrelimLabExercise2 {
 		int size = sc.nextInt();
 		// Create an array of the specified size
 		array = new int[size];
-
-		// Loop to iterate over each index of the array
-		for (int index = 0; index < size; index++) {
-			array[index] = -1;
-		} // end for
 
 		return array;
 	}// end method
