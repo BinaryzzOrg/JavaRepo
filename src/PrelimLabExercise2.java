@@ -12,7 +12,7 @@ public class PrelimLabExercise2 {
 	 */
 	final static String[] NOTICE_MSG = { "Choose if the user hasn't initialized an array",
 			"DISABLED (Clear changes first to initialized again",
-			" (It will only leave an \"X\" sign when you view it)" , "Shifting remaining elements in left side...."};
+			" (It will only leave an \"X\" sign when you view it)", "Shifting remaining elements in left side...." };
 	final static String PROGRAM_TITLE = "Welcome to Java Array Operations";
 	final static String[] PRINT_OPERATIONS = { "INITIALIZE", "REMOVE", "DISPLAY", "INSERT", "COMPRESS",
 			"CLEAR ALL CHANGES", "EXIT PROGRAM" };
@@ -242,14 +242,11 @@ public class PrelimLabExercise2 {
 	 * their relating order
 	 */
 
-	public static void Shift_CompressElem(int[] array) {
-		
+	public static void Shift_CompressElem(int[] array, int startCollectNegValue) {
+		// Prints message
 		System.out.println(NOTICE_MSG[3]);
 		// boolean flag if swaps are made during loop
-		boolean valid = false;
-		// provides as a position of index guide where the non-negative element to be
-		// placed
-		int nonNegVal = 0;
+		boolean complete_Pass = false;
 		// compression process, stops if there's no swap
 		do {
 			// loop through array
@@ -258,16 +255,16 @@ public class PrelimLabExercise2 {
 				if (array[i] > -1) {
 					// swap non-negative to the nonNegVal variable
 					int temp = array[i];
-					array[i] = array[nonNegVal];
-					array[nonNegVal] = temp;
+					array[i] = array[startCollectNegValue];
+					array[startCollectNegValue] = temp;
 					// increment nonNegVal to position next non-negative element
-					nonNegVal++;
+					startCollectNegValue++;
 				}
 			}
 			// set to true, indicates complete pass or looping
-			valid = true;
+			complete_Pass = true;
 			// continue until the swapping stops
-		} while (!valid);
+		} while (!complete_Pass);
 
 		// prints message indicate compression process is complete
 		System.out.println("Done compressing!!!");
@@ -278,28 +275,28 @@ public class PrelimLabExercise2 {
 	 */
 
 	public static void AskUserToContinue() {
-		
-		//integer variable used for user response storing
+
+		// integer variable used for user response storing
 		int proceed = 0;
-		//boolean to determine when to stop looping 
+		// boolean to determine when to stop looping
 		boolean repeatUntilNoError = false;
 		while (!repeatUntilNoError) {
-				//prompt a query for user if want to continue
-				System.out.println("Do you want to continue?\n[1]\n[0]:");
-				//stores user response
-				proceed = sc.nextInt();
-				//if 1, stop loop and go back to main menu
-				if (proceed == 1) {
-					System.out.println("Going Back to the Main Menu!!!");
-					repeatUntilNoError = true;
-					//if 0 terminate the application
-				} else if (proceed == 0) {
-					System.out.println("Leaving the Application");
-					System.exit(0);
-				} else {
-					//else invalid input then loop query again
-					System.out.println("Invalid Input!!!");
-				}
+			// prompt a query for user if want to continue
+			System.out.println("Do you want to continue?\n[1]\n[0]:");
+			// stores user response
+			proceed = sc.nextInt();
+			// if 1, stop loop and go back to main menu
+			if (proceed == 1) {
+				System.out.println("Going Back to the Main Menu!!!");
+				repeatUntilNoError = true;
+				// if 0 terminate the application
+			} else if (proceed == 0) {
+				System.out.println("Leaving the Application");
+				System.exit(0);
+			} else {
+				// else invalid input then loop query again
+				System.out.println("Invalid Input!!!");
+			}
 
 		}
 
@@ -314,11 +311,8 @@ public class PrelimLabExercise2 {
 		switch (input) {
 		case 1:
 
-			if (Initialized_First()) {
-				
-				Initialized();
-				AskUserToContinue();
-			}
+			Initialized();
+			AskUserToContinue();
 
 			break;
 		case 2:
@@ -351,7 +345,9 @@ public class PrelimLabExercise2 {
 				break;
 			}
 
-			Shift_CompressElem(array);
+			// calling compress element with parameter of an int array and a int primary
+			// used for counter later
+			Shift_CompressElem(array, 0);
 			AskUserToContinue();
 
 			break;
@@ -359,7 +355,7 @@ public class PrelimLabExercise2 {
 			if (Initialized_First()) {
 				break;
 			}
-			
+
 			ClearAllChanges(array, disableOneChoice);
 
 			break;
