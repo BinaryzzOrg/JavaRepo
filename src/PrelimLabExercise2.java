@@ -61,25 +61,27 @@ public class PrelimLabExercise2 {
 
 		}
 		return userPrompt;
-	}
+	}// end method
 	/*
 	 * Method to send a warning before checking the other CRUD operations returns a
 	 * true or false value
 	 */
 
 	public static boolean Initialized_First() {
+
 		// boolean flag to check if array is not initialized
 		boolean notInitialized = false;
+
 		// condition statement to verify if array is equal to null
 		if (array == null) {
 			// set to true
 			notInitialized = true;
 			// displays warnings
 			System.out.println("Initialized array first!!!");
-		}
-		// return boolean state
+		} // end if
+			// return boolean state
 		return notInitialized;
-	}
+	}// end method
 
 	public static void ClearAllChanges(int[] array, boolean getDisable_Switch) {
 
@@ -111,14 +113,21 @@ public class PrelimLabExercise2 {
 	 * the target element returns the index if found, else, returns -1
 	 */
 
-	public static void IndexLocate() {
+	public static int IndexLocate(int[] array, int indexToLocate) {
+		// return current and search index, used on remove operation
 
-		/*
-		 * return current and search index (change void) gagamitin sa remove operation
-		 * lagyan ng target int na parameter return the index if found if not return -1
-		 */
+		// -1 default
+		int temp = -1;
 
-	}
+		// iterate to find index
+		for (int index = 0; index < array.length; index++) {
+			if (indexToLocate == array[index]) {
+				return index;
+			}
+		} // end for
+
+		return temp;
+	}// end method
 
 	/*
 	 * Method to initialized array has a parameter of an integer array ask the user
@@ -191,26 +200,11 @@ public class PrelimLabExercise2 {
 			} else {
 				// else convert integer to string for printing purposes
 				System.out.print("[" + Integer.toString(display[i]) + "]");
-			}
-		}
-		// newline
+			} // end if else
+		} // end for
+			// newline
 		System.out.println();
-
-		/*
-		 * String[] arrayString = new String[array.length];
-		 * System.out.println("Elements of the array"); for(int i=0; i<array.length;
-		 * i++) { //convert int to String to store String value in array arrayString[i]
-		 * =Integer.toString(array[i]); //the condition that will print "X" if there are
-		 * -1 elements in the array if(array[i]==-1) { arrayString[i]="X";
-		 * 
-		 * }
-		 * 
-		 * System.out.print(arrayString[i]+" ");
-		 * 
-		 * }
-		 */
-
-	}
+	}// end method
 
 	/*
 	 * Method to insert an element in the array locates which index is vacated
@@ -231,9 +225,6 @@ public class PrelimLabExercise2 {
 			} // end if
 
 			System.out.println("Array is full!");
-
-			// these are changes in testBranch
-			System.out.println("test only branch");
 		} // end for loop
 	}// end method
 
