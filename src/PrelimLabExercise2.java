@@ -93,8 +93,6 @@ public class PrelimLabExercise2 {
 				System.out.println(NOTICE_MSG[2]);
 			}
 		}
-		System.out.println();
-
 	}
 
 	public static void DisplayArray(int[] display) {
@@ -116,9 +114,10 @@ public class PrelimLabExercise2 {
 	}
 
 	public static void InsertElement(int[] array) {
-
 		sc = new Scanner(System.in);
+		int counterOccupiedElem = 0;
 		for (int index = 0; index < array.length; index++) {
+			counterOccupiedElem++;
 			if (array[index] == -1) {
 				System.out.println("Enter element to be inserted: ");
 				array[index] = sc.nextInt();
@@ -126,12 +125,11 @@ public class PrelimLabExercise2 {
 				// *call display array here*
 				break;
 			} // end if
-
-			System.out.println("Array is full!");
-
-			// these are changes in testBranch
-			System.out.println("test only branch");
 		} // end for loop
+
+		if (counterOccupiedElem == array.length) {
+			System.out.println("Array is full!!");
+		}
 	}// end method
 
 	public static void Shift_CompressElem(int[] array) {
@@ -212,22 +210,29 @@ public class PrelimLabExercise2 {
 				break;
 			case "4":
 				if (disableOneChoice) {
-					break;
+					InsertElement(array);
+				} else {
+					System.out.println("Initialized First!");
 				}
+				MenuDriven(PRINT_OPERATIONS, disableOneChoice);
 				inputValid = true;
 				break;
 			case "5":
 				if (disableOneChoice) {
-					break;
+					Shift_CompressElem(array);
+				} else {
+					System.out.println("Initialized First!");
 				}
-
-				Shift_CompressElem(array);
+				MenuDriven(PRINT_OPERATIONS, disableOneChoice);
 				inputValid = true;
 				break;
 			case "6":
 				if (disableOneChoice) {
-					break;
+					ClearAllChanges(array, disableOneChoice);
+				} else {
+					System.out.println("Initialized First!");
 				}
+				MenuDriven(PRINT_OPERATIONS, disableOneChoice);
 				inputValid = true;
 				break;
 			case "7":
