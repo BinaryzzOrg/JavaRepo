@@ -13,9 +13,9 @@ public class PrelimLabExercise2 {
 //	@formatter:off
 	final private static String[] NOTICE_MSG = { "Choose if the user hasn't initialized an array",
 												"DISABLED (Clear changes first to initialized again",
-												"(It will only leave an \"X\" sign when you view it)",
-												"shifting remaining elements in left side...." };
-
+												"(It will only leave an \"X\" sign when you view it)", 
+												"Shifting remaining elements in left side...." };
+	
 	final private static String PROGRAM_TITLE = "Welcome to Java Array Operations";
 	final private static String[] PRINT_OPERATIONS = { "INITIALIZE", "REMOVE", "DISPLAY", "INSERT",
 													"COMPRESS", "CLEAR ALL CHANGES", "EXIT PROGRAM" };
@@ -171,6 +171,7 @@ public class PrelimLabExercise2 {
 			} // end if
 		} // end for loop
 
+
 		// detect that array is full
 		if (IsArrayFull) {
 			System.out.println("Array is full!\n");
@@ -182,10 +183,20 @@ public class PrelimLabExercise2 {
 	 *  placed also to shift rest of negative value to right
 	 */
 	public static void Shift_CompressElem(int[] array, int NonNegIndex) {
+
+
+		// detect that array is full
+		if (IsArrayFull) {
+			System.out.println("Array is full!\n");
+		} // end if
+	}// end method
+
+	public static void Shift_CompressElem(int[] array) {
 		// boolean flag if swaps are made during loop
 		boolean valid = false;
 		// provides as a position of index guide where the non-negative element to be
 		// placed
+		int nonNegVal = 0;
 		// compression process, stops if there's no swap
 		do {
 			// loop through array
@@ -196,10 +207,17 @@ public class PrelimLabExercise2 {
 
 					// swap non-negative to the nonNegVal variable
 					int temp = array[i];
+
 					array[i] = array[NonNegIndex];
 					array[NonNegIndex] = temp;
 					// increment nonNegVal to position next non-negative element
 					NonNegIndex++;
+
+					array[i] = array[nonNegVal];
+					array[nonNegVal] = temp;
+					// increment nonNegVal to position next non-negative element
+					nonNegVal++;
+
 				}
 			}
 			// set to true, indicates complete pass or looping
@@ -208,8 +226,11 @@ public class PrelimLabExercise2 {
 		} while (!valid);
 
 		// prints message indicate compression process is complete
+
 		System.out.println(NOTICE_MSG[3]);
 		//print shifted elements
+
+
 		DisplayArray(array);
 	}// end method
 
