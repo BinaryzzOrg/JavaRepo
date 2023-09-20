@@ -14,7 +14,7 @@ public class PrelimLabExercise2 {
 	final private static String[] NOTICE_MSG = { "Choose if the user hasn't initialized an array",
 												"DISABLED (Clear changes first to initialized again",
 												"(It will only leave an \"X\" sign when you view it)",
-												"Shifting remaining elements in left side...." };
+												"Shifting remaining elements in left side....", "Nothing to Compress here!!!" };
 
 	final private static String PROGRAM_TITLE = "Welcome to Java Array Operations";
 	final private static String[] PRINT_OPERATIONS = { "INITIALIZE", "REMOVE", "DISPLAY", "INSERT",
@@ -129,24 +129,31 @@ public class PrelimLabExercise2 {
 	 * of an integer array prints an "X" format when an index is vacated
 	 */
 
-	public static void DisplayArray(int[] display) {
-
-		// prints head message
-		System.out.print("\nCurrent Elements: ");
-
+	public static void DisplayArray(int[] display, int counter) {
+		//prints header msg
+		System.out.println("Displaying Elements......");
+		//print indeces label
+		System.out.print("Indeces:  ");
+		//prints the corresponding indices of elements
 		for (int i = 0; i < display.length; i++) {
-			// if neg 1 it will print X
-			if (display[i] == -1) {
-				System.out.printf("[X]");
+			System.out.print("[" + i + "]");
+		}
+		//newLine
+		System.out.println();
+		//print the elements label
+		System.out.print("Elements: ");
+		//for each loop to print the array prints an X if element is vacated
+		for (int element : display) {
+			if (element == -1) {
+				System.out.print("{X}");
 			} else {
-				// else convert integer to string for printing purposes
-				System.out.print("[" + Integer.toString(display[i]) + "]");
-			} // end if else
-		} // end for
+				System.out.print("{" + element + "}");
+			}
 
-		// newline
-		System.out.println("\n");
-	}// end method
+		}
+		//newLine
+		System.out.println();
+	}
 
 	/*
 	 * Method to insert an element in the array locates which index is vacated
@@ -184,34 +191,60 @@ public class PrelimLabExercise2 {
 	public static void Shift_CompressElem(int[] array, int NonNegIndex) {
 		// boolean flag if swaps are made during loop
 		boolean valid = false;
-		// provides as a position of index guide where the non-negative element to be
-		// placed
-		// compression process, stops if there's no swap
-		do {
-			// loop through array
-			for (int i = 0; i < array.length; i++) {
 
-				// check if element is greater than -1
-				if (array[i] > -1) {
+		// validates if there's needing to compress
+		if (CheckIf_NoCompress(array, 0)) {
+			System.out.println("Please remove some elements in order to compress!!!");
+		} else {
+			// compression process, stops if there's no swap
+			do {
+				// loop through array
+				for (int i = 0; i < array.length; i++) {
+					// check if element is greater than -1
+					if (array[i] > -1) {
 
-					// swap non-negative to the nonNegVal variable
-					int temp = array[i];
-					array[i] = array[NonNegIndex];
-					array[NonNegIndex] = temp;
-					// increment nonNegVal to position next non-negative element
-					NonNegIndex++;
+						// swap non-negative to the nonNegVal variable
+						int temp = array[i];
+						array[i] = array[NonNegIndex];
+						array[NonNegIndex] = temp;
+						// increment nonNegVal to position next non-negative element
+						NonNegIndex++;
+					}
 				}
-			}
-			// set to true, indicates complete pass or looping
-			valid = true;
-			// continue until the swapping stops
-		} while (!valid);
+				// set to true, indicates complete pass or looping
+				valid = true;
+				// continue until the swapping stops
+			} while (!valid);
 
-		// prints message indicate compression process is complete
-		System.out.println(NOTICE_MSG[3]);
-		//print shifted elements
-		DisplayArray(array);
+			// prints message indicate compression process is complete
+			System.out.println(NOTICE_MSG[3]);
+			// print shifted elements
+			DisplayArray(array, 0);
+		}
 	}// end method
+
+	/*
+	 * check if all values are not vacated
+	 * provides warning message
+	 */
+
+	public static boolean CheckIf_NoCompress(int[] array, int pos_Elem) {
+		//loop to validate and collect counter of positive values
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] != -1) {
+				pos_Elem++;
+			}
+		}
+		//if reaches the array size
+		if (pos_Elem == array.length) {
+			//prints msg
+			System.out.println(NOTICE_MSG[4]);
+			//return no vacant (true)
+			return true;
+		}
+		//there's vacant
+		return false;
+	}
 
 	/*
 	 * Prompts user to continues if not the program will be terminated
@@ -306,7 +339,7 @@ public class PrelimLabExercise2 {
 		if (disableOneChoice && choice == 2) {
 			RemoveElements(array);
 		} else if (disableOneChoice && choice == 3) {
-			DisplayArray(array);
+			DisplayArray(array, 0);
 		} else if (disableOneChoice && choice == 4) {
 			InsertElement(array);
 		} else if (disableOneChoice && choice == 5) {
