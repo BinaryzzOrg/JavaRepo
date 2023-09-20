@@ -139,9 +139,9 @@ public class PrelimLabExercise2 {
 
 		// ask user to Enter the size of array
 		System.out.print("Enter the size of the array: ");
-		int size = sc.nextInt();
+		int arraySize = sc.nextInt();
 		// Create an array of the specified size
-		array = new int[size];
+		array = new int[arraySize];
 
 		return array;
 	}// end method
