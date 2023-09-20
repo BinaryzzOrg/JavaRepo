@@ -79,6 +79,7 @@ public class PrelimLabExercise2 {
 	 * to input the size
 	 */
 
+
 	public static void Initialized() {
 
 		// ask user to Enter the size of array
