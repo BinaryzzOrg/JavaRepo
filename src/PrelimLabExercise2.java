@@ -13,8 +13,8 @@ public class PrelimLabExercise2 {
 //	@formatter:off
 	final private static String[] NOTICE_MSG = { "Choose if the user hasn't initialized an array",
 												"DISABLED (Clear changes first to initialized again",
-												" (It will only leave an \"X\" sign when you view it)", 
-												"jhifting remaining elements in left side...." };
+												"(It will only leave an \"X\" sign when you view it)", 
+												"shifting remaining elements in left side...." };
 	
 	final private static String PROGRAM_TITLE = "Welcome to Java Array Operations";
 	final private static String[] PRINT_OPERATIONS = { "INITIALIZE", "REMOVE", "DISPLAY", "INSERT",
@@ -44,7 +44,7 @@ public class PrelimLabExercise2 {
 				System.out.println("\t=>" + "[" + (i + 1) + "]" + blueprint[i]);
 			}
 		}
-		System.out.println("Please Choose An Operation:");
+		System.out.print("Please Choose An Operation: ");
 		Operation_Type();
 	}
 
@@ -88,7 +88,6 @@ public class PrelimLabExercise2 {
 
 		// Create an array of the specified size
 		array = new int[size];
-
 		// Loop to iterate over each index of the array
 		for (int index = 0; index < size; index++) {
 			System.out.print("Enter element at index " + index + ": ");
@@ -107,8 +106,9 @@ public class PrelimLabExercise2 {
 
 	public static void RemoveElements(int[] remove) {
 
-		System.out.print("Enter the index you want to removed\n: ");
+		System.out.print("\nEnter the index you want to removed: ");
 		int indexRemove = sc.nextInt();
+		System.out.println();
 
 		if (indexRemove > remove.length - 1 || indexRemove < 0) {
 			System.out.println("{Invalid index!! Index does not exist!}");
@@ -119,7 +119,7 @@ public class PrelimLabExercise2 {
 			} else {
 				remove[indexRemove] = -1;
 				System.out.println("Element at index [" + indexRemove + "] was successfully deleted!");
-				System.out.println(NOTICE_MSG[2]);
+				System.out.println(NOTICE_MSG[2] + "\n");
 			}
 		} // end if else
 	}// end method
@@ -132,7 +132,7 @@ public class PrelimLabExercise2 {
 	public static void DisplayArray(int[] display) {
 
 		// prints head message
-		System.out.println("Current Elements: ");
+		System.out.print("\nCurrent Elements: ");
 
 		for (int i = 0; i < display.length; i++) {
 			// if neg 1 it will print X
@@ -145,7 +145,7 @@ public class PrelimLabExercise2 {
 		} // end for
 
 		// newline
-		System.out.println();
+		System.out.println("\n");
 	}// end method
 
 	/*
@@ -158,20 +158,23 @@ public class PrelimLabExercise2 {
 		// store user input
 		sc = new Scanner(System.in);
 
+		boolean IsArrayFull = true;
 		// iterate the array
 		for (int index = 0; index < array.length; index++) {
-			if (array[index] == -1) {
-				System.out.println("Enter element to be inserted: ");
-				array[index] = sc.nextInt();
-				System.out.println("Element successfully inserted!");
 
-				// call to display array
-				DisplayArray(array);
+			if (array[index] == -1) {
+				System.out.print("\nEnter element to be inserted: ");
+				array[index] = sc.nextInt();
+				System.out.println("Element successfully inserted! \n");
+				IsArrayFull = false;
 				break;
 			} // end if
-
-			System.out.println("Array is full!");
 		} // end for loop
+
+		// detect that array is full
+		if (IsArrayFull) {
+			System.out.println("Array is full!\n");
+		} // end if
 	}// end method
 
 	public static void Shift_CompressElem(int[] array) {
@@ -202,7 +205,7 @@ public class PrelimLabExercise2 {
 		} while (!valid);
 
 		// prints message indicate compression process is complete
-		System.out.println("Done compressing!!!");
+		DisplayArray(array);
 	}// end method
 
 	/*
@@ -218,7 +221,7 @@ public class PrelimLabExercise2 {
 		while (!repeatUntilNoError) {
 
 			// prompt a query for user if want to continue
-			System.out.println("Do you want to continue?\n[1]\n[0]:");
+			System.out.print("Do you want to continue? [1] or [0]: ");
 
 			// stores user response
 			proceed = sc.nextInt();
@@ -226,7 +229,7 @@ public class PrelimLabExercise2 {
 			// if 1, stop loop and go back to main menu
 			if (proceed == 1) {
 
-				System.out.println("Going Back to the Main Menu!!!");
+				System.out.println("Going Back to the Main Menu!");
 				repeatUntilNoError = true;
 				// if 0 terminate the application
 			} else if (proceed == 0) {
@@ -236,7 +239,7 @@ public class PrelimLabExercise2 {
 			} else {
 
 				// else invalid input then loop query again
-				System.out.println("Invalid Input!!!");
+				System.out.println("{Invalid Input!!!}");
 			} // end else if
 		} // end while
 	}// end method
@@ -264,64 +267,53 @@ public class PrelimLabExercise2 {
 				inputValid = true;
 				break;
 			case "2":
-				if (disableOneChoice) {
-					RemoveElements(array);
-				} else {
-					System.out.println("Initialized First!");
-				}
-				MenuDriven(PRINT_OPERATIONS, disableOneChoice);
-				inputValid = true;
+				OperationErrorMsg(2);
 				break;
 			case "3":
-				if (disableOneChoice) {
-					DisplayArray(array);
-				} else {
-					System.out.println("Initialized First!");
-				}
-				MenuDriven(PRINT_OPERATIONS, disableOneChoice);
-				inputValid = true;
+				OperationErrorMsg(3);
 				break;
 			case "4":
-				if (disableOneChoice) {
-					InsertElement(array);
-				} else {
-					System.out.println("Initialized First!");
-				}
-				MenuDriven(PRINT_OPERATIONS, disableOneChoice);
-				inputValid = true;
+				OperationErrorMsg(4);
 				break;
 			case "5":
-				if (disableOneChoice) {
-					Shift_CompressElem(array);
-				} else {
-					System.out.println("Initialized First!");
-				}
-				MenuDriven(PRINT_OPERATIONS, disableOneChoice);
-				inputValid = true;
+				OperationErrorMsg(5);
 				break;
 			case "6":
-				if (disableOneChoice) {
-					ClearAllChanges(array, disableOneChoice);
-				} else {
-					System.out.println("Initialized First!");
-				}
-				MenuDriven(PRINT_OPERATIONS, disableOneChoice);
-				inputValid = true;
+				OperationErrorMsg(6);
 				break;
 			case "7":
-				System.out.println("Exiting Program!!!");
+				System.out.println("Exiting Program!");
 				System.exit(0);
 				break;
 			case "":
 				Operation_Type();
 			default:
-				System.out.println("Please type from 1-7 only!!!");
+				System.out.println("{Please type from 1-7 only!}");
 				Operation_Type();
 				break;
-			}
-		}
+			}// end switch
+		} // end while
+	}// end method
 
-	}
+	public static boolean OperationErrorMsg(int choice) {
+
+		String errorMsg = "{Initialized First!}\n";
+		if (disableOneChoice && choice == 2) {
+			RemoveElements(array);
+		} else if (disableOneChoice && choice == 3) {
+			DisplayArray(array);
+		} else if (disableOneChoice && choice == 4) {
+			InsertElement(array);
+		} else if (disableOneChoice && choice == 5) {
+			Shift_CompressElem(array);
+		} else if (disableOneChoice && choice == 6) {
+			ClearAllChanges(array, disableOneChoice);
+		} else {
+			System.out.println(errorMsg);
+		}
+		MenuDriven(PRINT_OPERATIONS, disableOneChoice);
+		return true;
+	}// end method
 
 	// Main Driver (Method)
 	public static void main(String[] args) {
