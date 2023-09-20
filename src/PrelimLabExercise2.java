@@ -13,9 +13,9 @@ public class PrelimLabExercise2 {
 //	@formatter:off
 	final private static String[] NOTICE_MSG = { "Choose if the user hasn't initialized an array",
 												"DISABLED (Clear changes first to initialized again",
-												"(It will only leave an \"X\" sign when you view it)", 
-												"shifting remaining elements in left side...." };
-	
+												"(It will only leave an \"X\" sign when you view it)",
+												"Shifting remaining elements in left side...." };
+
 	final private static String PROGRAM_TITLE = "Welcome to Java Array Operations";
 	final private static String[] PRINT_OPERATIONS = { "INITIALIZE", "REMOVE", "DISPLAY", "INSERT",
 													"COMPRESS", "CLEAR ALL CHANGES", "EXIT PROGRAM" };
@@ -177,12 +177,15 @@ public class PrelimLabExercise2 {
 		} // end if
 	}// end method
 
-	public static void Shift_CompressElem(int[] array) {
+	/*
+	 * // Method to provide a position of index where the non-negative element to be
+	 *  placed also to shift rest of negative value to right
+	 */
+	public static void Shift_CompressElem(int[] array, int NonNegIndex) {
 		// boolean flag if swaps are made during loop
 		boolean valid = false;
 		// provides as a position of index guide where the non-negative element to be
 		// placed
-		int nonNegVal = 0;
 		// compression process, stops if there's no swap
 		do {
 			// loop through array
@@ -193,10 +196,10 @@ public class PrelimLabExercise2 {
 
 					// swap non-negative to the nonNegVal variable
 					int temp = array[i];
-					array[i] = array[nonNegVal];
-					array[nonNegVal] = temp;
+					array[i] = array[NonNegIndex];
+					array[NonNegIndex] = temp;
 					// increment nonNegVal to position next non-negative element
-					nonNegVal++;
+					NonNegIndex++;
 				}
 			}
 			// set to true, indicates complete pass or looping
@@ -205,6 +208,8 @@ public class PrelimLabExercise2 {
 		} while (!valid);
 
 		// prints message indicate compression process is complete
+		System.out.println(NOTICE_MSG[3]);
+		//print shifted elements
 		DisplayArray(array);
 	}// end method
 
@@ -305,7 +310,7 @@ public class PrelimLabExercise2 {
 		} else if (disableOneChoice && choice == 4) {
 			InsertElement(array);
 		} else if (disableOneChoice && choice == 5) {
-			Shift_CompressElem(array);
+			Shift_CompressElem(array, 0);
 		} else if (disableOneChoice && choice == 6) {
 			ClearAllChanges(array, disableOneChoice);
 		} else {
