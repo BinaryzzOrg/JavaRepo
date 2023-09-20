@@ -137,10 +137,7 @@ public class PrelimLabExercise2 {
 
 	public static int[] Initialized() {
 
-		System.out.println("testing eclipse git");
-		System.out.println("here too");
-
-		// ask user to Enter the size of array // and this is just test comment to test
+		// ask user to Enter the size of array
 		System.out.print("Enter the size of the array: ");
 		int arraySize = sc.nextInt();
 		// Create an array of the specified size
@@ -157,7 +154,21 @@ public class PrelimLabExercise2 {
 
 	public static void RemoveElements(int[] remove) {
 
-		// i removed here
+		System.out.print("Enter the index you want to removed\n: ");
+		int indexRemove = sc.nextInt();
+
+		if (indexRemove > remove.length - 1 || indexRemove < 0) {
+			System.out.println("{Invalid index!! Index does not exist!}");
+			RemoveElements(remove);
+		} else {
+			if (remove[indexRemove] == -1) {
+				System.out.println("There's no value to be deleted!");
+			} else {
+				remove[indexRemove] = -1;
+				System.out.println("Element at index [" + indexRemove + "] was successfully deleted!");
+				System.out.println(NOTICE_MSG[2]);
+			}
+		} // end if else
 	}// end method
 
 	/*
