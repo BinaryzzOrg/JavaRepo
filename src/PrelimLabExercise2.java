@@ -3,22 +3,26 @@ import java.util.Scanner;
 public class PrelimLabExercise2 {
 
 	// create object of Scanner
-	static Scanner sc = new Scanner(System.in);
+	private static Scanner sc = new Scanner(System.in);
 	// global integer array used for later
-	static int[] array;
+	private static int[] array;
 	/*
 	 * constant variables used to print warnings, provide the title and print
 	 * operations
 	 */
-	final static String[] NOTICE_MSG = { "Choose if the user hasn't initialized an array",
-			"DISABLED (Clear changes first to initialized again",
-			" (It will only leave an \"X\" sign when you view it)", "Shifting remaining elements in left side...." };
-	final static String PROGRAM_TITLE = "Welcome to Java Array Operations";
-	final static String[] PRINT_OPERATIONS = { "INITIALIZE", "REMOVE", "DISPLAY", "INSERT", "COMPRESS",
-			"CLEAR ALL CHANGES", "EXIT PROGRAM" };
+//	@formatter:off
+	final private static String[] NOTICE_MSG = { "Choose if the user hasn't initialized an array",
+												"DISABLED (Clear changes first to initialized again",
+												" (It will only leave an \"X\" sign when you view it)", 
+												"jhifting remaining elements in left side...." };
+	
+	final private static String PROGRAM_TITLE = "Welcome to Java Array Operations";
+	final private static String[] PRINT_OPERATIONS = { "INITIALIZE", "REMOVE", "DISPLAY", "INSERT",
+													"COMPRESS", "CLEAR ALL CHANGES", "EXIT PROGRAM" };
+//	@formatter:on
 	// boolean flags
-	static boolean repeatProcess = false;
-	static boolean disableOneChoice = false;
+	private static boolean repeatProcess = false;
+	private static boolean disableOneChoice = false;
 
 	/*
 	 * Method to PRINT the introductory of the program has a parameter of an String
@@ -26,7 +30,9 @@ public class PrelimLabExercise2 {
 	 * really passes the 1-6 choices range handles exception if user input a
 	 * non-match data type
 	 */
+
 	public static int MenuDriven(String[] blueprint, boolean disableOneChoice) {
+
 		boolean passed = false;
 		int userPrompt = 0;
 		while (!passed) {
@@ -52,7 +58,7 @@ public class PrelimLabExercise2 {
 				if (userPrompt == i) {
 					passed = true;
 					break;
-				}
+				} // end if
 			} // end if
 
 			if (!passed) {
@@ -105,10 +111,10 @@ public class PrelimLabExercise2 {
 				// else terminate the operation and go back to main menu
 			} else if (clearPrompt == 0) {
 				System.out.println("Heading back to Main Menu!!!");
-			}
-
+			} // end if else
 		} // end while loop
 	}// end method
+
 	/*
 	 * Method to locate index has a parameter of an integer array and an integer for
 	 * the target element returns the index if found, else, returns -1
@@ -190,7 +196,8 @@ public class PrelimLabExercise2 {
 				System.out.print("[" + Integer.toString(display[i]) + "]");
 			} // end if else
 		} // end for
-			// newline
+
+		// newline
 		System.out.println();
 	}// end method
 
@@ -200,14 +207,17 @@ public class PrelimLabExercise2 {
 	 */
 
 	public static void InsertElement(int[] array) {
+
 		// store user input
 		sc = new Scanner(System.in);
+
 		// iterate the array
 		for (int index = 0; index < array.length; index++) {
 			if (array[index] == -1) {
 				System.out.println("Enter element to be inserted: ");
 				array[index] = sc.nextInt();
 				System.out.println("Element successfully inserted!");
+
 				// call to display array
 				DisplayArray(array);
 				break;
