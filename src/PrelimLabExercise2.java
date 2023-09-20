@@ -137,7 +137,10 @@ public class PrelimLabExercise2 {
 
 	public static int[] Initialized() {
 
-		// ask user to Enter the size of array
+		System.out.println("testing eclipse git");
+		System.out.println("here too");
+
+		// ask user to Enter the size of array // and this is just test comment to test
 		System.out.print("Enter the size of the array: ");
 		int arraySize = sc.nextInt();
 		// Create an array of the specified size
