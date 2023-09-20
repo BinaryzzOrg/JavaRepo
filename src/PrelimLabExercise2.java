@@ -14,7 +14,7 @@ public class PrelimLabExercise2 {
 	final private static String[] NOTICE_MSG = { "Choose if the user hasn't initialized an array",
 												"DISABLED (Clear changes first to initialized again",
 												"(It will only leave an \"X\" sign when you view it)",
-												"shifting remaining elements in left side...." };
+												"Shifting remaining elements in left side...." };
 
 	final private static String PROGRAM_TITLE = "Welcome to Java Array Operations";
 	final private static String[] PRINT_OPERATIONS = { "INITIALIZE", "REMOVE", "DISPLAY", "INSERT",
