@@ -157,21 +157,7 @@ public class PrelimLabExercise2 {
 
 	public static void RemoveElements(int[] remove) {
 
-		System.out.print("Enter the index you want to removed\n: ");
-		int indexRemove = sc.nextInt();
-
-		if (indexRemove > remove.length - 1 || indexRemove < 0) {
-			System.out.println("{Invalid index!! Index does not exist!}");
-			RemoveElements(remove);
-		} else {
-			if (remove[indexRemove] == -1) {
-				System.out.println("There's no value to be deleted!");
-			} else {
-				remove[indexRemove] = -1;
-				System.out.println("Element at index [" + indexRemove + "] was successfully deleted!");
-				System.out.println(NOTICE_MSG[2]);
-			}
-		} // end if else
+		// i removed here
 	}// end method
 
 	/*
