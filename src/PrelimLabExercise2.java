@@ -50,7 +50,7 @@ public class PrelimLabExercise2 {
 					System.out.println("\t=>" + "[" + (i + 1) + "]" + blueprint[i]);
 				} // end if else
 			} // end for
-			System.out.println("Please Choose An Operation:");
+			System.out.print("Please Choose An Operation: ");
 
 			userPrompt = sc.nextInt();
 			// check if user already input between 1-7 ranges
@@ -144,10 +144,25 @@ public class PrelimLabExercise2 {
 	public static int[] Initialized() {
 
 		// ask user to Enter the size of array
-		System.out.print("Enter the size of the array: ");
+		System.out.print("Enter size of the array: ");
+
 		int arraySize = sc.nextInt();
+
 		// Create an array of the specified size
 		array = new int[arraySize];
+
+		for (int index = 0; index < array.length; index++) {
+
+			// checks input
+			System.out.print("Enter a number for index " + index + ": ");
+			if (sc.hasNextInt()) {
+				array[index] = sc.nextInt();
+			} else {
+				--index;
+				System.out.println("{Enter only integer} \n");
+				sc.next();
+			} // end if else`
+		} // end for
 
 		return array;
 	}// end method
