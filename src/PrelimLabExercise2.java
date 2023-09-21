@@ -133,12 +133,7 @@ public class PrelimLabExercise2 {
 		//prints header msg
 		System.out.println("Displaying Elements......");
 		//print indeces label
-		System.out.print("Indeces:  ");
-		//prints the corresponding indices of elements
-		for (int i = 0; i < display.length; i++) {
-			System.out.print("[" + i + "]");
-		}
-		//newLine
+		
 		System.out.println();
 		//print the elements label
 		System.out.print("Elements: ");
@@ -148,9 +143,18 @@ public class PrelimLabExercise2 {
 				System.out.print("{X}");
 			} else {
 				System.out.print("{" + element + "}");
-			}
-
-		}
+				
+			}			
+		}//end for loop
+		
+		//newLine
+		System.out.println();
+		
+		System.out.print("Indeces:  ");
+		//prints the corresponding indices of elements
+		for (int i = 0; i < display.length; i++) {
+			System.out.print("[" + i + "]");
+		}//end for loop
 		//newLine
 		System.out.println();
 	}
