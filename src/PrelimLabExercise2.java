@@ -189,15 +189,12 @@ public class PrelimLabExercise2 {
 	 *  placed also to shift rest of negative value to right
 	 */
 	public static void Shift_CompressElem(int[] array, int NonNegIndex) {
-		// boolean flag if swaps are made during loop
-		boolean valid = false;
 
 		// validates if there's needing to compress
 		if (CheckIf_NoCompress(array, 0)) {
 			System.out.println("Please remove some elements in order to compress!!!");
 		} else {
-			// compression process, stops if there's no swap
-			do {
+
 				// loop through array
 				for (int i = 0; i < array.length; i++) {
 					// check if element is greater than -1
@@ -211,10 +208,6 @@ public class PrelimLabExercise2 {
 						NonNegIndex++;
 					}
 				}
-				// set to true, indicates complete pass or looping
-				valid = true;
-				// continue until the swapping stops
-			} while (!valid);
 
 			// prints message indicate compression process is complete
 			System.out.println(NOTICE_MSG[3]);
