@@ -130,6 +130,7 @@ public class PrelimLabExercise2 {
 	 */
 
 	public static void DisplayArray(int[] display, int counter) {
+
 		//prints header msg
 		System.out.println("Displaying Elements......");
 		//print indeces label
@@ -157,6 +158,7 @@ public class PrelimLabExercise2 {
 		}//end for loop
 		//newLine
 		System.out.println();
+
 	}
 
 	/*
