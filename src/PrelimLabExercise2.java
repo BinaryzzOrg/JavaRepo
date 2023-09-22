@@ -12,7 +12,7 @@ public class PrelimLabExercise2 {
 	 */
 //	@formatter:off
 	final private static String[] NOTICE_MSG = { "Choose if the user hasn't initialized an array",
-												"DISABLED (Clear changes first to initialized again",
+												"[1]INITIALIZED (not recommended)",
 												"(It will only leave an \"X\" sign when you view it)",
 												"Shifting remaining elements in left side....", "Nothing to Compress here!!!" };
 
@@ -156,10 +156,10 @@ public class PrelimLabExercise2 {
 		for (int i = 0; i < display.length; i++) {
 			System.out.print("[" + i + "]");
 		}//end for loop
+		
 		//newLine
-		System.out.println();
-
-	}
+		System.out.println("\n");
+	}//end method
 
 	/*
 	 * Method to insert an element in the array locates which index is vacated
