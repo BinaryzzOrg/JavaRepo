@@ -139,12 +139,14 @@ public class PrelimLabExercise2 {
 		System.out.print("Elements: ");
 		//for each loop to print the array prints an X if element is vacated
 		for (int element : display) {
-			if (element == -1) {
+			//if vacant
+			if (element == -1) { 
+				//print "{X}"
 				System.out.print("{X}");
 			} else {
 				System.out.print("{" + element + "}");
 				
-			}			
+			}// end if			
 		}//end for loop
 		
 		//newLine
@@ -157,7 +159,7 @@ public class PrelimLabExercise2 {
 		}//end for loop
 		//newLine
 		System.out.println();
-	}
+	}//end method
 
 	/*
 	 * Method to insert an element in the array locates which index is vacated
@@ -331,7 +333,7 @@ public class PrelimLabExercise2 {
 	}// end method
 
 	public static boolean OperationErrorMsg(int choice) {
-
+		
 		String errorMsg = "{Initialized First!}\n";
 		if (disableOneChoice && choice == 2) {
 			RemoveElements(array);
@@ -349,7 +351,7 @@ public class PrelimLabExercise2 {
 		MenuDriven(PRINT_OPERATIONS, disableOneChoice);
 		return true;
 	}// end method
-
+	
 	// Main Driver (Method)
 	public static void main(String[] args) {
 		System.out.println("**********\"" + PROGRAM_TITLE + "\"**********" + ""
