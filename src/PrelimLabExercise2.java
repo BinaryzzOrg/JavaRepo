@@ -118,8 +118,11 @@ public class PrelimLabExercise2 {
 				System.out.println("There's no value to be deleted!");
 			} else {
 				remove[indexRemove] = -1;
+				
 				System.out.println("Element at index [" + indexRemove + "] was successfully deleted!");
-				System.out.println(NOTICE_MSG[2] + "\n");
+				
+				System.out.println(NOTICE_MSG[2] + "\n");			
+				
 			}
 		} // end if else
 	}// end method
@@ -133,8 +136,8 @@ public class PrelimLabExercise2 {
 
 		//prints header msg
 		System.out.println("Displaying Elements......");
-		//print indeces label
 		
+		//print indeces label	
 		System.out.println();
 		//print the elements label
 		System.out.print("Elements: ");
@@ -325,8 +328,10 @@ public class PrelimLabExercise2 {
 			case "":
 				Operation_Type();
 			default:
-				System.out.println("{Please type from 1-7 only!}");
+				System.out.println("{Please type from 1-7 only!}\n");
+				MenuDriven(PRINT_OPERATIONS, disableOneChoice);
 				Operation_Type();
+				
 				break;
 			}// end switch
 		} // end while
@@ -335,6 +340,7 @@ public class PrelimLabExercise2 {
 	public static boolean OperationErrorMsg(int choice) {
 
 		String errorMsg = "{Initialized First!}\n";
+		
 		if (disableOneChoice && choice == 2) {
 			RemoveElements(array);
 		} else if (disableOneChoice && choice == 3) {
@@ -346,8 +352,11 @@ public class PrelimLabExercise2 {
 		} else if (disableOneChoice && choice == 6) {
 			ClearAllChanges(array, disableOneChoice);
 		} else {
+			
+			// Print the error message for an invalid choice
 			System.out.println(errorMsg);
 		}
+		
 		MenuDriven(PRINT_OPERATIONS, disableOneChoice);
 		return true;
 	}// end method
