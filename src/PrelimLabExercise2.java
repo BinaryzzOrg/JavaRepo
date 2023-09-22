@@ -12,13 +12,13 @@ public class PrelimLabExercise2 {
 	 */
 //	@formatter:off
 	final private static String[] NOTICE_MSG = { "Choose if the user hasn't initialized an array",
-												"DISABLED (Clear changes first to initialized again",
+												"[1]INITIALIZED (not recommended)",
 												"(It will only leave an \"X\" sign when you view it)",
-												"Shifting remaining elements in left side....", "Nothing to Compress here!!!" };
+												"Shifting remaining elements in left side...", "{Nothing to Compress here!}" };
 
 	final private static String PROGRAM_TITLE = "Welcome to Java Array Operations";
 	final private static String[] PRINT_OPERATIONS = { "INITIALIZE", "REMOVE", "DISPLAY", "INSERT",
-													"COMPRESS", "CLEAR ALL CHANGES", "EXIT PROGRAM" };
+													"COMPRESS", "EXIT PROGRAM" };
 //	@formatter:on
 	// boolean flags
 	private static boolean repeatProcess = false;
@@ -36,7 +36,7 @@ public class PrelimLabExercise2 {
 		System.out.println("\tOPERATIONS");
 		for (int i = 0; i < blueprint.length; i++) {
 			if (i == 0 && !disableOneChoice) {
-				System.out.println("\t=>" + "[" + (i + 1) + "]" + blueprint[i] + " (" + NOTICE_MSG[i] + ").");
+				System.out.println("\t=>" + "[" + (i + 1) + "]" + blueprint[i] + " (" + NOTICE_MSG[i] + ")");
 				// if true disables the first operation
 			} else if (i == 0 && disableOneChoice) {
 				System.out.println("\t=>" + NOTICE_MSG[i + 1]);
@@ -48,7 +48,7 @@ public class PrelimLabExercise2 {
 		Operation_Type();
 	}
 
-	public static void ClearAllChanges(int[] array, boolean getDisable_Switch) {
+	public static void ClearAllChanges() {
 
 		// boolean flag indicate if array is switch back to null again
 		boolean Deleted = false;
@@ -57,18 +57,20 @@ public class PrelimLabExercise2 {
 		// while boolean is false
 		while (!Deleted) {
 			// prompt query
-			System.out.println("You sure to clear all your changes?\n" + "[1] Clear it" + "\n[0] I Change my mind");
+			System.out.print("You sure to clear all your changes?\n" + "[1] Clear it" + "\n[0] I Change my mind\n:");
 			// collects user input
 			clearPrompt = sc.nextInt();
 			// if equals to 1 then array will be null, boolean flag become true, disable the
 			// initialize choice will be false again
 			if (clearPrompt == 1) {
 				Deleted = true;
-				getDisable_Switch = false;
+				disableOneChoice = false;
 				array = null;
 				// else terminate the operation and go back to main menu
 			} else if (clearPrompt == 0) {
-				System.out.println("Going back to Main Menu!!!");
+				System.out.println("Going back to Main Menu...\n");
+				MenuDriven(PRINT_OPERATIONS, disableOneChoice);
+				Deleted = true;
 			}
 		} // end for
 
@@ -105,20 +107,22 @@ public class PrelimLabExercise2 {
 	 */
 
 	public static void RemoveElements(int[] remove) {
-
+		//ask user to enter the index
 		System.out.print("\nEnter the index you want to removed: ");
 		int indexRemove = sc.nextInt();
-		System.out.println();
-
+		//if index out of bounds send error message
 		if (indexRemove > remove.length - 1 || indexRemove < 0) {
 			System.out.println("{Invalid index!! Index does not exist!}");
 			RemoveElements(remove);
-		} else {
+		} else {// if index is valid
+			//if index value is vacant or empty print error message
 			if (remove[indexRemove] == -1) {
-				System.out.println("There's no value to be deleted!");
-			} else {
-				remove[indexRemove] = -1;
-				System.out.println("Element at index [" + indexRemove + "] was successfully deleted!");
+				System.out.println("{There's no value to be deleted!} \n");
+			} else {//if index value is not empty
+				//make the index empty
+				remove[indexRemove] = -1; 
+				//display message
+				System.out.println("\nElement at index [" + indexRemove + "] was successfully deleted!");
 				System.out.println(NOTICE_MSG[2] + "\n");
 			}
 		} // end if else
@@ -131,7 +135,7 @@ public class PrelimLabExercise2 {
 
 	public static void DisplayArray(int[] display, int counter) {
 		//prints header msg
-		System.out.println("Displaying Elements......");
+		System.out.println("Displaying Elements...");
 		//print indeces label
 		
 		System.out.println();
@@ -158,7 +162,7 @@ public class PrelimLabExercise2 {
 			System.out.print("[" + i + "]");
 		}//end for loop
 		//newLine
-		System.out.println();
+		System.out.println("\n");
 	}//end method
 
 	/*
@@ -186,7 +190,7 @@ public class PrelimLabExercise2 {
 
 		// detect that array is full
 		if (IsArrayFull) {
-			System.out.println("Array is full!\n");
+			System.out.println("{Array is full!}\n");
 		} // end if
 	}// end method
 
@@ -198,7 +202,7 @@ public class PrelimLabExercise2 {
 
 		// validates if there's needing to compress
 		if (CheckIf_NoCompress(array, 0)) {
-			System.out.println("Please remove some elements in order to compress!!!");
+			System.out.println("{Please remove some elements in order to compress!}\n");
 		} else {
 
 				// loop through array
@@ -295,7 +299,7 @@ public class PrelimLabExercise2 {
 			switch (user_Choice) {
 			case "1":
 				if (disableOneChoice) {
-					System.out.println("Already Initialized!\n");
+					 ClearAllChanges();
 				} else {
 					Initialized();
 					disableOneChoice = true;
@@ -316,24 +320,23 @@ public class PrelimLabExercise2 {
 				OperationErrorMsg(5);
 				break;
 			case "6":
-				OperationErrorMsg(6);
-				break;
-			case "7":
-				System.out.println("Exiting Program!");
+				System.out.println("Exiting Program...");
 				System.exit(0);
 				break;
 			case "":
 				Operation_Type();
 			default:
-				System.out.println("{Please type from 1-7 only!}");
+				System.out.println("{Please type from 1-6 only!}");
 				Operation_Type();
 				break;
 			}// end switch
 		} // end while
 	}// end method
 
+	/*Method to get the user input and use a specific algorithm 
+	 * assigned to each input choice
+	 */
 	public static boolean OperationErrorMsg(int choice) {
-		
 		String errorMsg = "{Initialized First!}\n";
 		if (disableOneChoice && choice == 2) {
 			RemoveElements(array);
@@ -343,8 +346,6 @@ public class PrelimLabExercise2 {
 			InsertElement(array);
 		} else if (disableOneChoice && choice == 5) {
 			Shift_CompressElem(array, 0);
-		} else if (disableOneChoice && choice == 6) {
-			ClearAllChanges(array, disableOneChoice);
 		} else {
 			System.out.println(errorMsg);
 		}
