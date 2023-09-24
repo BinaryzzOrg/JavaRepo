@@ -42,11 +42,12 @@ public class PrelimLabExercise2 {
 				System.out.println("\t=>" + NOTICE_MSG[i + 1]);
 			} else {
 				System.out.println("\t=>" + "[" + (i + 1) + "]" + blueprint[i]);
-			}
-		}
+			} // end if else
+		} // end for
+
 		System.out.print("Please Choose An Operation: ");
 		Operation_Type();
-	}
+	}// end method
 
 	public static void ClearAllChanges(int[] array, boolean getDisable_Switch) {
 
@@ -69,10 +70,9 @@ public class PrelimLabExercise2 {
 				// else terminate the operation and go back to main menu
 			} else if (clearPrompt == 0) {
 				System.out.println("Going back to Main Menu!!!");
-			}
+			} // end else if
 		} // end for
-
-	}
+	}// end method
 
 	/*
 	 * Method to initialized array has a parameter of an integer array ask the user
@@ -83,7 +83,6 @@ public class PrelimLabExercise2 {
 
 		// ask user to Enter the size of array
 		System.out.print("Enter size of the array: ");
-
 		int size = sc.nextInt();
 
 		// Create an array of the specified size
@@ -93,9 +92,9 @@ public class PrelimLabExercise2 {
 			System.out.print("Enter element at index " + index + ": ");
 			// Read an element and store it at the current index
 			array[index] = sc.nextInt();
-		}
-		System.out.println();
+		} // end for
 
+		System.out.println();
 	}// end method
 
 	/*
@@ -118,12 +117,12 @@ public class PrelimLabExercise2 {
 				System.out.println("There's no value to be deleted!");
 			} else {
 				remove[indexRemove] = -1;
-				
+
 				System.out.println("\nElement at index [" + indexRemove + "] was successfully deleted!");
-				
-				System.out.println(NOTICE_MSG[2] + "\n");			
-				
-			}
+
+				System.out.println(NOTICE_MSG[2] + "\n");
+
+			} // end if else
 		} // end if else
 	}// end method
 
@@ -134,35 +133,35 @@ public class PrelimLabExercise2 {
 
 	public static void DisplayArray(int[] display, int counter) {
 
-		//prints header msg
+		// prints header msg
 		System.out.println("Displaying Elements......");
-		
-		//print indeces label	
+		// print indeces label
 		System.out.println();
-		//print the elements label
+		// print the elements label
 		System.out.print("Elements: ");
-		//for each loop to print the array prints an X if element is vacated
+
+		// for each loop to print the array prints an X if element is vacated
 		for (int element : display) {
 			if (element == -1) {
 				System.out.print("{X}");
 			} else {
 				System.out.print("{" + element + "}");
-				
-			}			
-		}//end for loop
-		
-		//newLine
+
+			}
+		} // end for loop
+
+		// newLine
 		System.out.println();
-		
+
 		System.out.print("Indeces:  ");
-		//prints the corresponding indices of elements
+		// prints the corresponding indices of elements
 		for (int i = 0; i < display.length; i++) {
 			System.out.print("[" + i + "]");
-		}//end for loop
-		
-		//newLine
+		} // end for loop
+
+		// newLine
 		System.out.println("\n");
-	}//end method
+	}// end method
 
 	/*
 	 * Method to insert an element in the array locates which index is vacated
@@ -173,21 +172,24 @@ public class PrelimLabExercise2 {
 
 		// store user input
 		sc = new Scanner(System.in);
-
+		// boolean to track the state of array
 		boolean IsArrayFull = true;
 		// iterate the array
 		for (int index = 0; index < array.length; index++) {
-
+			// if the current index of array is == -1
 			if (array[index] == -1) {
+				// ask user to input an element
 				System.out.print("\nEnter element to be inserted: ");
 				array[index] = sc.nextInt();
 				System.out.println("Element successfully inserted! \n");
+				// change the boolean state to false indicating that array is not full
 				IsArrayFull = false;
+				// break out of for loop
 				break;
 			} // end if
 		} // end for loop
 
-		// detect that array is full
+		// detect if array is full
 		if (IsArrayFull) {
 			System.out.println("Array is full!\n");
 		} // end if
@@ -195,8 +197,9 @@ public class PrelimLabExercise2 {
 
 	/*
 	 * // Method to provide a position of index where the non-negative element to be
-	 *  placed also to shift rest of negative value to right
+	 * placed also to shift rest of negative value to right
 	 */
+
 	public static void Shift_CompressElem(int[] array, int NonNegIndex) {
 
 		// validates if there's needing to compress
@@ -204,49 +207,51 @@ public class PrelimLabExercise2 {
 			System.out.println("Please remove some elements in order to compress!!!");
 		} else {
 
-				// loop through array
-				for (int i = 0; i < array.length; i++) {
-					// check if element is greater than -1
-					if (array[i] > -1) {
+			// loop through array
+			for (int i = 0; i < array.length; i++) {
+				// check if element is greater than -1
+				if (array[i] > -1) {
 
-						// swap non-negative to the nonNegVal variable
-						int temp = array[i];
-						array[i] = array[NonNegIndex];
-						array[NonNegIndex] = temp;
-						// increment nonNegVal to position next non-negative element
-						NonNegIndex++;
-					}
-				}
+					// swap non-negative to the nonNegVal variable
+					int temp = array[i];
+					array[i] = array[NonNegIndex];
+					array[NonNegIndex] = temp;
+					// increment nonNegVal to position next non-negative element
+					NonNegIndex++;
+				} // end if
+			} // end for
 
 			// prints message indicate compression process is complete
 			System.out.println(NOTICE_MSG[3]);
 			// print shifted elements
 			DisplayArray(array, 0);
-		}
+		} // end if else
 	}// end method
 
 	/*
-	 * check if all values are not vacated
-	 * provides warning message
+	 * check if all values are not vacated provides warning message
 	 */
 
 	public static boolean CheckIf_NoCompress(int[] array, int pos_Elem) {
-		//loop to validate and collect counter of positive values
+
+		// loop to validate and collect counter of positive values
 		for (int i = 0; i < array.length; i++) {
 			if (array[i] != -1) {
 				pos_Elem++;
-			}
-		}
-		//if reaches the array size
+			} // end if
+		} // end for
+
+		// if reaches the array size
 		if (pos_Elem == array.length) {
-			//prints msg
+			// prints msg
 			System.out.println(NOTICE_MSG[4]);
-			//return no vacant (true)
+			// return no vacant (true)
 			return true;
-		}
-		//there's vacant
+		} // end if
+
+		// there's vacant
 		return false;
-	}
+	}// end method
 
 	/*
 	 * Prompts user to continues if not the program will be terminated
@@ -331,18 +336,20 @@ public class PrelimLabExercise2 {
 				System.out.println("{Please type from 1-7 only!}\n");
 				MenuDriven(PRINT_OPERATIONS, disableOneChoice);
 				Operation_Type();
-				
+
 				break;
 			}// end switch
 		} // end while
 	}// end method
 
-	/*Method to get the user input and use a specific algorithm 
-	 * assigned to each input choice
+	/*
+	 * Method to get the user input and use a specific algorithm assigned to each
+	 * input choice
 	 */
+
 	public static boolean OperationErrorMsg(int choice) {
 		String errorMsg = "{Initialized First!}\n";
-		
+
 		if (disableOneChoice && choice == 2) {
 			RemoveElements(array);
 		} else if (disableOneChoice && choice == 3) {
@@ -354,15 +361,15 @@ public class PrelimLabExercise2 {
 		} else if (disableOneChoice && choice == 6) {
 			ClearAllChanges(array, disableOneChoice);
 		} else {
-			
+
 			// Print the error message for an invalid choice
 			System.out.println(errorMsg);
-		}
-		
+		} // end if else
+
 		MenuDriven(PRINT_OPERATIONS, disableOneChoice);
 		return true;
 	}// end method
-	
+
 	// Main Driver (Method)
 	public static void main(String[] args) {
 		System.out.println("**********\"" + PROGRAM_TITLE + "\"**********" + ""
