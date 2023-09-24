@@ -42,11 +42,11 @@ public class PrelimLabExercise2 {
 				System.out.println("\t=>" + NOTICE_MSG[i + 1]);
 			} else {
 				System.out.println("\t=>" + "[" + (i + 1) + "]" + blueprint[i]);
-			}
-		}
+			} // end if else
+		} // end for
 		System.out.print("Please Choose An Operation: ");
 		Operation_Type();
-	}
+	}// end method
 
 	public static void ClearAllChanges() {
 
@@ -71,10 +71,9 @@ public class PrelimLabExercise2 {
 				System.out.println("Going back to Main Menu...\n");
 				MenuDriven(PRINT_OPERATIONS, disableOneChoice);
 				Deleted = true;
-			}
+			} // end if else
 		} // end for
-
-	}
+	}// end method
 
 	/*
 	 * Method to initialized array has a parameter of an integer array ask the user
@@ -95,9 +94,9 @@ public class PrelimLabExercise2 {
 			System.out.print("Enter element at index " + index + ": ");
 			// Read an element and store it at the current index
 			array[index] = sc.nextInt();
-		}
-		System.out.println();
+		} // end for
 
+		System.out.println();
 	}// end method
 
 	/*
@@ -107,6 +106,7 @@ public class PrelimLabExercise2 {
 	 */
 
 	public static void RemoveElements(int[] remove) {
+
 		// ask user to enter the index
 		System.out.print("\nEnter the index you want to removed: ");
 		int indexRemove = sc.nextInt();
@@ -124,7 +124,7 @@ public class PrelimLabExercise2 {
 				// display message
 				System.out.println("\nElement at index [" + indexRemove + "] was successfully deleted!");
 				System.out.println(NOTICE_MSG[2] + "\n");
-			}
+			} // end if else
 		} // end if else
 	}// end method
 
@@ -134,6 +134,7 @@ public class PrelimLabExercise2 {
 	 */
 
 	public static void DisplayArray(int[] display, int counter) {
+
 		// prints header msg
 		System.out.println("Displaying Elements...");
 		// print indeces label
@@ -198,6 +199,7 @@ public class PrelimLabExercise2 {
 	 * // Method to provide a position of index where the non-negative element to be
 	 * placed also to shift rest of negative value to right
 	 */
+
 	public static void Shift_CompressElem(int[] array, int NonNegIndex) {
 
 		// validates if there's needing to compress
@@ -216,14 +218,14 @@ public class PrelimLabExercise2 {
 					array[NonNegIndex] = temp;
 					// increment nonNegVal to position next non-negative element
 					NonNegIndex++;
-				}
-			}
+				} // end if
+			} // end for
 
 			// prints message indicate compression process is complete
 			System.out.println(NOTICE_MSG[3]);
 			// print shifted elements
 			DisplayArray(array, 0);
-		}
+		} // end if else
 	}// end method
 
 	/*
@@ -231,6 +233,7 @@ public class PrelimLabExercise2 {
 	 */
 
 	public static boolean CheckIf_NoCompress(int[] array, int pos_Elem) {
+
 		// loop to validate and collect counter of positive values
 		for (int i = 0; i < array.length; i++) {
 			if (array[i] != -1) {
@@ -243,10 +246,11 @@ public class PrelimLabExercise2 {
 			System.out.println(NOTICE_MSG[4]);
 			// return no vacant (true)
 			return true;
-		}
+		} // end if
+
 		// there's vacant
 		return false;
-	}
+	}// end method
 
 	/*
 	 * Prompts user to continues if not the program will be terminated
@@ -336,6 +340,7 @@ public class PrelimLabExercise2 {
 	 * Method to get the user input and use a specific algorithm assigned to each
 	 * input choice
 	 */
+
 	public static boolean OperationErrorMsg(int choice) {
 		String errorMsg = "{Initialized First!}\n";
 		if (disableOneChoice && choice == 2) {
@@ -348,7 +353,7 @@ public class PrelimLabExercise2 {
 			Shift_CompressElem(array, 0);
 		} else {
 			System.out.println(errorMsg);
-		}
+		} // end if else
 		MenuDriven(PRINT_OPERATIONS, disableOneChoice);
 		return true;
 	}// end method
@@ -365,5 +370,4 @@ public class PrelimLabExercise2 {
 			// continue looping until boolean flag becomes true
 		} while (!repeatProcess);
 	}// end method
-
 }// end class
