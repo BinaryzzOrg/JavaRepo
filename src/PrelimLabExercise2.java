@@ -253,42 +253,6 @@ public class PrelimLabExercise2 {
 	}// end method
 
 	/*
-	 * Prompts user to continues if not the program will be terminated
-	 */
-
-	public static void AskUserToContinue() {
-
-		// integer variable used for user response storing
-		int proceed = 0;
-		// boolean to determine when to stop looping
-		boolean repeatUntilNoError = false;
-		while (!repeatUntilNoError) {
-
-			// prompt a query for user if want to continue
-			System.out.print("Do you want to continue? [1] or [0]: ");
-
-			// stores user response
-			proceed = sc.nextInt();
-
-			// if 1, stop loop and go back to main menu
-			if (proceed == 1) {
-
-				System.out.println("Going Back to the Main Menu!");
-				repeatUntilNoError = true;
-				// if 0 terminate the application
-			} else if (proceed == 0) {
-
-				System.out.println("Leaving the Application");
-				System.exit(0);
-			} else {
-
-				// else invalid input then loop query again
-				System.out.println("{Invalid Input!!!}");
-			} // end else if
-		} // end while
-	}// end method
-
-	/*
 	 * Method to properly make a condition between operations has a parameter of an
 	 * integer for checking the input of user uses the method Initialized_First upon
 	 * checking if array is not initialized first
